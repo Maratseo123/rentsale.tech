@@ -1,0 +1,44 @@
+a.reportBroken img,
+a.removeBroken img {
+	background: url('gallery.png') 0 0 no-repeat;
+	width: 20px;
+	height: 18px;
+	margin-left: 4px;
+    vertical-align: top;
+}
+a.removeBroken img {
+	background-position: 0 -18px!important;
+}
+a.reportBrokenGrid img {
+	margin: 0;
+}
+
+#points {
+    max-height: 300px;
+}
+#points .submit-cell:last-child {
+	padding-bottom: 0;
+}
+
+#user-point {
+    padding-top: 10px;
+}
+
+.rbl_loading {
+	text-align: center;
+}
+
+.rbl-submit-row {
+    padding-top: 20px;
+}
+
+.rbl-submit-row .cancel {
+    margin: 0 5px;
+}
+
+/*** ALL TABLET/MOBILE VIEWS ***/
+@media screen and (max-width: 991px) {
+	#points {
+		max-height: 80%;
+	}
+}

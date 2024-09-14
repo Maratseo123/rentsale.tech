@@ -1,0 +1,247 @@
+{
+    "packages": [
+        {
+            "name": "flynax-components/image-uploader",
+            "version": "dev-master",
+            "version_normalized": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "git@gitlab.com:flynax/components/profileThumbnailUpload.git",
+                "reference": "d75ac7af7506464938d3d75617ee912a7e6300a2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://gitlab.com/api/v4/projects/flynax%2Fcomponents%2FprofileThumbnailUpload/repository/archive.zip?sha=d75ac7af7506464938d3d75617ee912a7e6300a2",
+                "reference": "d75ac7af7506464938d3d75617ee912a7e6300a2",
+                "shasum": ""
+            },
+            "require-dev": {
+                "flynax-components/unit-testing": "dev-master"
+            },
+            "time": "2018-10-12T10:22:43+00:00",
+            "default-branch": true,
+            "type": "library",
+            "installation-source": "source",
+            "autoload": {
+                "psr-4": {
+                    "Flynax\\Components\\Image\\Uploader\\": "src/"
+                }
+            },
+            "description": "Allows to upload image to the user profile",
+            "support": {
+                "source": "https://gitlab.com/flynax/components/profileThumbnailUpload/-/tree/master",
+                "issues": "https://gitlab.com/flynax/components/profileThumbnailUpload/-/issues"
+            },
+            "install-path": "../flynax-components/image-uploader"
+        },
+        {
+            "name": "flynax-components/objects-container",
+            "version": "dev-master",
+            "version_normalized": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "git@gitlab.com:flynax/components/objects-container.git",
+                "reference": "bd520f40038a1d4b055c43c20dcb888ffeaa3d15"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://gitlab.com/api/v4/projects/flynax%2Fcomponents%2Fobjects-container/repository/archive.zip?sha=bd520f40038a1d4b055c43c20dcb888ffeaa3d15",
+                "reference": "bd520f40038a1d4b055c43c20dcb888ffeaa3d15",
+                "shasum": ""
+            },
+            "time": "2018-03-16T08:36:13+00:00",
+            "default-branch": true,
+            "type": "library",
+            "installation-source": "source",
+            "autoload": {
+                "psr-4": {
+                    "Flynax\\Components\\": "src/"
+                }
+            },
+            "description": "Description here",
+            "support": {
+                "source": "https://gitlab.com/flynax/components/objects-container/-/tree/master",
+                "issues": "https://gitlab.com/flynax/components/objects-container/-/issues"
+            },
+            "install-path": "../flynax-components/objects-container"
+        },
+        {
+            "name": "flynax/filesystem",
+            "version": "1.0.1",
+            "version_normalized": "1.0.1.0",
+            "source": {
+                "type": "git",
+                "url": "git@gitlab.com:flynax/components/filesystem.git",
+                "reference": "812fa40cbae7f178743cff0987cab858dcbc7e88"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://gitlab.com/api/v4/projects/flynax%2Fcomponents%2Ffilesystem/repository/archive.zip?sha=812fa40cbae7f178743cff0987cab858dcbc7e88",
+                "reference": "812fa40cbae7f178743cff0987cab858dcbc7e88",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.9",
+                "symfony/filesystem": "2.8.39"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "4.8.36"
+            },
+            "time": "2020-02-21T11:15:06+02:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "Flynax\\Component\\": "src/"
+                }
+            },
+            "autoload-dev": {
+                "classmap": [
+                    "tests/"
+                ]
+            },
+            "license": [
+                "ISC"
+            ],
+            "authors": [
+                {
+                    "name": "Flynax Classifieds Software",
+                    "homepage": "https://www.flynax.com",
+                    "role": "Owner"
+                },
+                {
+                    "name": "Alex S.",
+                    "email": "runexes@me.com",
+                    "role": "Developer"
+                }
+            ],
+            "support": {
+                "source": "https://gitlab.com/flynax/components/filesystem/-/tree/1.0.1",
+                "issues": "https://gitlab.com/flynax/components/filesystem/-/issues"
+            },
+            "install-path": "../flynax/filesystem"
+        },
+        {
+            "name": "hybridauth/hybridauth",
+            "version": "v3.8.1",
+            "version_normalized": "3.8.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/hybridauth/hybridauth.git",
+                "reference": "cda2ddac102c29872164677fe92900bfef2eb15c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/hybridauth/hybridauth/zipball/cda2ddac102c29872164677fe92900bfef2eb15c",
+                "reference": "cda2ddac102c29872164677fe92900bfef2eb15c",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.4 || ^7.0 || ^8.0"
+            },
+            "require-dev": {
+                "ext-curl": "*",
+                "phpunit/phpunit": "^4.8.35 || ^6.5 || ^8.0"
+            },
+            "suggest": {
+                "firebase/php-jwt": "Needed to support Apple provider",
+                "phpseclib/phpseclib": "Needed to support Apple provider"
+            },
+            "time": "2022-07-12T07:29:28+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "Hybridauth\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Miled",
+                    "email": "hybridauth@gmail.com"
+                }
+            ],
+            "description": "PHP Social Authentication Library",
+            "homepage": "https://hybridauth.github.io",
+            "keywords": [
+                "Authentication",
+                "OpenId",
+                "api",
+                "apple",
+                "authorization",
+                "facebook",
+                "google",
+                "oauth",
+                "social",
+                "twitter"
+            ],
+            "support": {
+                "gitter": "https://gitter.im/hybridauth/hybridauth",
+                "issues": "https://github.com/hybridauth/hybridauth/issues",
+                "source": "https://github.com/hybridauth/hybridauth/tree/v3.8.1"
+            },
+            "install-path": "../hybridauth/hybridauth"
+        },
+        {
+            "name": "symfony/filesystem",
+            "version": "v2.8.39",
+            "version_normalized": "2.8.39.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/filesystem.git",
+                "reference": "125403a59e4cb4e3ebf46d0162fabcde613d2b97"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/filesystem/zipball/125403a59e4cb4e3ebf46d0162fabcde613d2b97",
+                "reference": "125403a59e4cb4e3ebf46d0162fabcde613d2b97",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.9"
+            },
+            "time": "2018-02-19T16:23:47+00:00",
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.8-dev"
+                }
+            },
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Filesystem\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony Filesystem Component",
+            "homepage": "https://symfony.com",
+            "support": {
+                "source": "https://github.com/symfony/filesystem/tree/2.8"
+            },
+            "install-path": "../symfony/filesystem"
+        }
+    ],
+    "dev": true,
+    "dev-package-names": []
+}

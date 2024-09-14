@@ -1,0 +1,47 @@
+#copy-correct-link {
+    margin: 0;
+}
+.provide-guide-box {
+    background: #e7e7e7;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px #c8c8c8 solid;
+    border-radius: 3px;
+}
+.provide-guide-box > a {
+    color: #b01935;
+}
+.fb-login-button {
+    border-radius: 4px;
+    display: inline-block;
+    background: #4267b2;
+    position: relative;
+    padding: 8px 9px 8px 36px;
+    color: white !important;
+    text-decoration: none !important;
+}
+.fb-login-button:before {
+    content: '';
+    left: 4px;
+    top: 4px;
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    display: inline-block;
+    background-image: url(./images/fb-logo.png);
+    background-size: cover;
+}
+
+.error-log {
+    margin-top: 30px;
+}
+.error-log_item {
+    display: flex;
+}
+.error-log .body > div:not(:last-child) {
+    margin-bottom: 5px;
+}
+.error-log_date {
+    flex: 0 0 110px;
+    opacity: .7;
+}

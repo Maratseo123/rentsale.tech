@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<plugin name="hybridAuthLogin">
+    <title>Social Network Login</title>
+    <description>Allows users to log in via social networks</description>
+    <author>Alan Wake</author>
+    <owner>Flynax Classifieds Software</owner>
+    <version>2.1.4</version>
+    <date>18.04.2018</date>
+    <class>HybridAuthLogin</class>
+    <controller>hybrid_auth_login</controller>
+    <compatible>4.7.0</compatible>
+
+    <files>
+        <file>.htaccess</file>
+        <file>admin/.htaccess</file>
+        <file>admin/hybrid_auth_login.inc.php</file>
+        <file>admin/hybrid_auth_login.tpl</file>
+        <file>bootstrap.php</file>
+        <file>requests.php</file>
+        <file>rlHybridAuthLogin.class.php</file>
+        <file>src/Configs.php</file>
+        <file>src/FilesWorker.php</file>
+        <file>src/HybridAuth.php</file>
+        <file>src/Interfaces/ProviderInterface.php</file>
+        <file>src/ModulesManager.php</file>
+        <file>src/ProviderResolver.php</file>
+        <file>src/Providers/AbstractProviderAdapter.php</file>
+        <file>src/Providers/Facebook.php</file>
+        <file>src/Providers/Google.php</file>
+        <file>src/Providers/Twitter.php</file>
+        <file>src/Providers/Vkontakte.php</file>
+        <file>src/Traits/UrlTrait.php</file>
+        <file>src/Uid.php</file>
+        <file>static/.htaccess</file>
+        <file>static/admin_style.css</file>
+        <file>static/icons.svg</file>
+        <file>static/lib.js</file>
+        <file>static/style.css</file>
+        <file>view/apTplHeader.tpl</file>
+        <file>view/escortGenderFields.tpl</file>
+        <file>view/footer.tpl</file>
+        <file>view/iconsContainer.tpl</file>
+        <file>view/module_configs.tpl</file>
+        <file>view/registrationBottomTpl.tpl</file>
+        <file>vendor/autoload.php</file>
+    </files>
+
+    <install><![CDATA[
+        $GLOBALS['reefless']->loadClass('HybridAuthLogin', null, 'hybridAuthLogin');
+        $GLOBALS['rlHybridAuthLogin']->install();
+    ]]></install>
+
+    <hooks>
+        <hook name="ajaxRequest"><![CDATA[]]></hook>
+        <hook name="apTplFooter"><![CDATA[]]></hook>
+        <hook name="apTplHeader"><![CDATA[]]></hook>
+        <hook name="staticDataRegister"><![CDATA[]]></hook>
+        <hook name="registrationBottomTpl"><![CDATA[]]></hook>
+        <hook name="phpBeforeLoginValidation"><![CDATA[]]></hook>
+        <hook name="deleteAccountSetItems"><![CDATA[]]></hook>
+        <hook name="apExtPluginsUpdate"><![CDATA[]]></hook>
+        <hook name="apPhpTrashBottom"><![CDATA[]]></hook>
+        <hook name="tplUserNavbar"><![CDATA[]]></hook>
+        <hook name="tplFooter"><![CDATA[]]></hook>
+        <hook name="phpDeleteAccountDetails"><![CDATA[]]></hook>
+        <hook name="apTplPluginsGrid"><![CDATA[]]></hook>
+        <hook name="apPhpConfigAfterUpdate"><![CDATA[]]></hook>
+    </hooks>
+
+    <phrases>
+        <phrase version="2.1.2" key="ha_copy" module="admin" target="hybrid_auth_login"><![CDATA[Copy]]></phrase>
+        <phrase version="2.1.2" key="ha_copy_link" module="admin" target="hybrid_auth_login"><![CDATA[Redirect OAuth link]]></phrase>
+        <phrase version="2.1.2" key="ha_link_has_been_copied" module="admin" target="hybrid_auth_login"><![CDATA[The link has been successfully copied.]]></phrase>
+        <phrase version="2.1.2" key="ha_ap_edit_module_page" module="admin" target="hybrid_auth_login"><![CDATA[Edit {provider_name} Provider]]></phrase>
+        <phrase version="2.1.2" key="ha_please_select_account_type" module="frontEnd" target="registration"><![CDATA[Please select an account type to continue logging in.]]></phrase>
+        <phrase key="ha_social_login" module="common"><![CDATA[Social Login]]></phrase>
+        <phrase key="ha_email_doesnt_exist" module="common"><![CDATA[The user with the email address doesn't exist. You may sign up via a social network; please select an account type to proceed.]]></phrase>
+        <phrase key="ha_select_account_type" module="common"><![CDATA[- Select account type -]]></phrase>
+        <phrase key="ha_provider_without_email" module="common"><![CDATA[The provider hasn't returned your email address; please make sure you added and verified it in the social network.]]></phrase>
+        <phrase key="ha_user_isnt_synchonized" module="common"><![CDATA[The account with the email address already exists on the site. To synchronize with Social Network Login plugin please enter the password to your account on the site.]]></phrase>
+        <phrase key="ha_verify_account" module="common"><![CDATA[Verify Account]]></phrase>
+        <phrase key="ha_cant_synchronize" module="common"><![CDATA[Failed to synchronize your account; please make sure you've entered the correct password.]]></phrase>
+        <phrase key="ha_user_inactive_or_in_trash" module="common"><![CDATA[The user account is either disabled or moved to the Trash Box; please contact the Administrator to get the problem resolved.]]></phrase>
+        <phrase key="ha_fb_connect_plugin_conflict" module="common"><![CDATA[The Social Network Login plugin has been disabled because it can't run simultaneously with the Facebook Connect plugin.]]></phrase>
+        <phrase key="ha_fb_cant_enable_plugin" module="admin" version="2.0.0"><![CDATA[The Social Network Login can't run simultaneously with the Facebook Connect plugin. Uninstall the Facebook Connect and try again.]]></phrase>
+        <phrase version="2.1.2" key="ha_ap_modules" module="admin" target="hybrid_auth_login"><![CDATA[Providers Manager]]></phrase>
+        <phrase version="2.1.2" key="ha_modules_list" module="admin" target="hybrid_auth_login"><![CDATA[All Providers]]></phrase>
+        <phrase version="2.1.2" key="ha_configurations_has_been_saved" module="admin" target="hybrid_auth_login"><![CDATA[The changes were successfully saved and provider enabled.]]></phrase>
+        <phrase version="2.1.2" key="ha_provider_guide_link" module="admin" target="hybrid_auth_login"><![CDATA[The {provider} guide is available [here].]]></phrase>
+        <phrase key="ha_select_gender" module="common"><![CDATA[- Select gender -]]></phrase>
+        <phrase version="2.1.2" key="ha_apple_configuration_notice" module="admin" target="hybrid_auth_login"><![CDATA[No need to configure anything from the admin panel. Follow the link above to configure the provider.]]></phrase>
+        <phrase version="2.1.2" key="ha_module" module="admin" target="hybrid_auth_login"><![CDATA[Module]]></phrase>
+    </phrases>
+
+    <configs key="ha_configurations" name="Social Network Login">
+        <![CDATA[]]>
+        <config key="ha_enable_avatar_uploading" name="Upload thumbnails from social networks" type="bool"><![CDATA[1]]></config>
+        <config key="ha_enable_password_synchronization" description="When disabled, verification will take place automatically." name="Account synchronization with password" type="bool"><![CDATA[0]]></config>
+        <config key="ha_vkontakte_app_id" name="Application ID" type="text" group="0"><![CDATA[]]></config>
+        <config key="ha_vkontakte_app_key" name="Secure key" type="text" group="0"><![CDATA[]]></config>
+        <config key="ha_vkontakte_app_secret" name="Service token" type="text" group="0"><![CDATA[]]></config>
+        <config key="ha_twitter_app_id" name="Consumer Key (API Key)" type="text" group="0"><![CDATA[]]></config>
+        <config key="ha_twitter_app_secret" name="Consumer Secret (API Secret)" type="text" group="0"><![CDATA[]]></config>
+        <config key="ha_facebook_app_id" name="App ID" type="text" group="0"><![CDATA[]]></config>
+        <config key="ha_facebook_app_secret" name="App Secret" type="text" group="0"><![CDATA[]]></config>
+        <config key="ha_google_app_key" name="App ID" type="text" group="0"><![CDATA[]]></config>
+        <config key="ha_google_app_id" name="App Secret" type="text" group="0"><![CDATA[]]></config>
+    </configs>
+
+    <updates>
+        <update version="1.1.0" files="static/icons.svg,src/Providers/Google.php,src/HybridAuth.php,requests.php"><![CDATA[
+            require_once RL_UPLOAD . 'hybridAuthLogin/vendor/autoload.php';
+            $filesystem = new \Flynax\Component\Filesystem();
+
+            $pluginsVendor = RL_PLUGINS . 'hybridAuthLogin/vendor';
+            $inUploadVendor = RL_UPLOAD . 'hybridAuthLogin/vendor';
+
+            $filesystem->remove($pluginsVendor);
+            $filesystem->copy($inUploadVendor, $pluginsVendor);
+        ]]></update>
+        <update version="1.1.1" files="static/icons.svg"><![CDATA[]]></update>
+        <update version="2.0.0" files="requests.php,rlHybridAuthLogin.class.php,src/API.php,src/ModulesManager.php,src/ProviderResolver.php,static/icons.svg,static/style.css"><![CDATA[]]></update>
+        <update version="2.1.0" files="admin/hybrid_auth_login.inc.php,admin/hybrid_auth_login.tpl,bootstrap.php,requests.php,src/HybridAuth.php,src/ProviderResolver.php,static/icons.svg"><![CDATA[
+            global $rlDb;
+
+            $rlDb->query("
+                DELETE FROM `{db_prefix}config`
+                WHERE `Plugin` = 'hybridAuthLogin' AND `Key` IN(
+                    'ha_instagram_app_id',
+                    'ha_instagram_app_secret'
+                )
+            ");
+
+            $rlDb->query("
+                DELETE FROM `{db_prefix}lang_keys`
+                WHERE `Plugin` = 'hybridAuthLogin' AND `Key` LIKE 'config+name+ha\_instagram\_%'
+            ");
+
+            $rlDb->query("
+                DELETE FROM `{db_prefix}ha_providers`
+                WHERE `Provider` = 'instagram'
+            ");
+
+            $rlDb->query("
+                INSERT INTO `{db_prefix}ha_providers` (`Provider`, `Status`)
+                VALUES ('apple', 'approval')
+            ");
+
+            @unlink(RL_PLUGINS . '/hybridAuthLogin/src/Providers/Instagram.php');
+        ]]></update>
+        <update version="2.1.1" files="requests.php,src/Providers/Facebook.php,src/Uid.php,src/ProviderResolver.php,rlHybridAuthLogin.class.php,admin/hybrid_auth_login.inc.php"><![CDATA[]]></update>
+        <update version="2.1.2" files="bootstrap.php,rlHybridAuthLogin.class.php,i18n/ru.json,static/lib.js,view/apTplHeader.tpl,view/footer.tpl"><![CDATA[
+            global $rlDb;
+
+            @unlink(RL_PLUGINS . 'hybridAuthLogin/src/functions.php');
+            @unlink(RL_PLUGINS . 'hybridAuthLogin/static/admin_lib.js');
+
+            $phrases = [
+                'ha_something_went_wrong',
+                'ha_continue',
+                'ha_something_wrong_with_provider',
+                'ha_all_fields_are_required'
+            ];
+
+            $rlDb->query(
+                "DELETE FROM `{db_prefix}lang_keys`
+                WHERE `Plugin` = 'hybridAuthLogin' AND `Key` IN ('" . implode("','", $phrases) . "')"
+            );
+
+            // Translate ru phrases
+            $languages = $GLOBALS['languages'];
+            if (in_array('ru', array_keys($languages))) {
+                $russianTranslation = json_decode(file_get_contents(RL_UPLOAD . 'hybridAuthLogin/i18n/ru.json'), true);
+                foreach ($russianTranslation as $phraseKey => $phraseValue) {
+                    $rlDb->updateOne(array(
+                        'fields' => array('Value' => $phraseValue),
+                        'where'  => array('Key'   => $phraseKey, 'Code' => 'ru'),
+                    ), 'lang_keys');
+                }
+            }
+
+            // Update vendor
+            require_once RL_UPLOAD . 'hybridAuthLogin/vendor/autoload.php';
+            $filesystem = new \Flynax\Component\Filesystem();
+
+            $pluginsVendor = RL_PLUGINS . 'hybridAuthLogin/vendor';
+            $inUploadVendor = RL_UPLOAD . 'hybridAuthLogin/vendor';
+
+            $filesystem->remove($pluginsVendor);
+
+            if (method_exists($filesystem, 'copyTo')) {
+                $filesystem->copyTo($inUploadVendor, $pluginsVendor);
+            } else {
+                $filesystem->copy($inUploadVendor, $pluginsVendor);
+            }
+        ]]></update>
+        <update version="2.1.3" files="rlHybridAuthLogin.class.php,view/registrationBottomTpl.tpl"><![CDATA[
+            require RL_UPLOAD . 'hybridAuthLogin/vendor/autoload.php';
+            $filesystem = new \Flynax\Component\Filesystem();
+            $oldVendor = RL_PLUGINS . 'hybridAuthLogin/vendor/';
+            $filesystem->remove($oldVendor);
+            $copyFunction = method_exists($filesystem, 'copyTo') ? 'copyTo' : 'copy';
+            $filesystem->$copyFunction(RL_UPLOAD . 'hybridAuthLogin/vendor/', $oldVendor);
+        ]]></update>
+        <update version="2.1.4" files="admin/hybrid_auth_login.inc.php,requests.php,rlHybridAuthLogin.class.php,src/ModulesManager.php,src/ProviderResolver.php,src/Providers/Facebook.php,src/Providers/Google.php,src/Providers/Twitter.php,src/Providers/Vkontakte.php"><![CDATA[
+            @unlink(RL_PLUGINS . 'hybridAuthLogin/view/registrationStepActionsTpl.tpl');
+
+            require RL_UPLOAD . 'hybridAuthLogin/vendor/autoload.php';
+            $filesystem = new \Flynax\Component\Filesystem();
+            $oldVendor = RL_PLUGINS . 'hybridAuthLogin/vendor/';
+            $filesystem->remove($oldVendor);
+            $copyFunction = method_exists($filesystem, 'copyTo') ? 'copyTo' : 'copy';
+            $filesystem->$copyFunction(RL_UPLOAD . 'hybridAuthLogin/vendor/', $oldVendor);
+        ]]></update>
+    </updates>
+
+    <uninstall><![CDATA[
+        $GLOBALS['reefless']->loadClass('HybridAuthLogin', null, 'hybridAuthLogin');
+        $GLOBALS['rlHybridAuthLogin']->uninstall();
+    ]]></uninstall>
+</plugin>

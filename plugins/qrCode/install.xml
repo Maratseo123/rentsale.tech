@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<plugin name="qrCode">
+    <title>QR Code Generator</title>
+    <description>Generates QR codes for listings</description>
+    <author>Peter Pan</author>
+    <owner>Flynax Classifieds Software</owner>
+    <version>1.1.0</version>
+    <date>02.09.2013</date>
+    <compatible>4.6.0</compatible>
+
+    <files>
+        <file>rlQrCode.class.php</file>
+        <file>qrCode.tpl</file>
+        <file>qrcode.png</file>
+        <file>phpqrcode/phpqrcode.php</file>
+        <file>phpqrcode/qrbitstream.php</file>
+        <file>phpqrcode/qrconfig.php</file>
+        <file>phpqrcode/qrconst.php</file>
+        <file>phpqrcode/qrencode.php</file>
+        <file>phpqrcode/qrimage.php</file>
+        <file>phpqrcode/qrinput.php</file>
+        <file>phpqrcode/qrlib.php</file>
+        <file>phpqrcode/qrmask.php</file>
+        <file>phpqrcode/qrrscode.php</file>
+        <file>phpqrcode/qrspec.php</file>
+        <file>phpqrcode/qrsplit.php</file>
+        <file>phpqrcode/qrtools.php</file>
+        <file>i18n/ru.json</file>
+    </files>
+
+    <phrases>
+        <phrase version="1.1.0" key="see_qrCode" module="common"><![CDATA[View QR Code]]></phrase>
+    </phrases>
+
+    <install><![CDATA[
+            global $reefless;
+            if (!is_dir(RL_FILES . 'qrcode')) {
+                $reefless->rlMkdir(RL_FILES . 'qrcode');
+            }
+    ]]></install>
+    <hooks>
+        <hook name="listingDetailsAfterStats"><![CDATA[
+            global $reefless, $page_info, $listing_data, $listing_id;
+			if ( $page_info['Controller'] == 'listing_details' )
+			{
+			    $user_dir = RL_FILES.'qrcode'.RL_DS.'user_'.$listing_data['Account_ID'];
+                if(!is_dir($user_dir)){
+                    $reefless->rlMkdir($user_dir);
+                }
+                if(!file_exists($user_dir . RL_DS . 'listing_' . $listing_id . '.png')){
+                    $reefless -> loadClass('QrCode', false, 'qrCode');
+                    $GLOBALS['rlQrCode'] -> generateQR_Code((int)$listing_id);
+                }
+                $GLOBALS['rlSmarty'] -> display(RL_ROOT .'plugins'. RL_DS .'qrCode'. RL_DS .'qrCode.tpl');
+			}
+		]]></hook>
+        <hook name="apPhpListingsAfterAdd"><![CDATA[
+            global $reefless, $listing_id;
+            $reefless -> loadClass('QrCode', false, 'qrCode');
+            $GLOBALS['rlQrCode'] -> generateQR_Code((int)$listing_id);
+		]]></hook>
+        <hook name="apPhpListingsAfterEdit"><![CDATA[
+            global $reefless, $listing_id;
+            $reefless -> loadClass('QrCode', false, 'qrCode');
+            $GLOBALS['rlQrCode'] -> generateQR_Code((int)$listing_id);
+		]]></hook>
+        <hook name="apPhpAccountsAfterEdit"><![CDATA[
+            global $reefless, $account_id;
+            $reefless -> loadClass('QrCode', false, 'qrCode');
+            $GLOBALS['rlQrCode'] -> remove_QR_ByUserID((int)$profile_info['ID']);
+		]]></hook>
+        <hook name="afterListingCreate"><![CDATA[
+            global $reefless, $listing_id;
+            $reefless -> loadClass('QrCode', false, 'qrCode');
+            $GLOBALS['rlQrCode'] -> generateQR_Code((int)$listing_id);
+		]]></hook>
+        <hook name="afterListingEdit"><![CDATA[
+            global $reefless, $listing_id;
+            $reefless -> loadClass('QrCode', false, 'qrCode');
+            $GLOBALS['rlQrCode'] -> generateQR_Code((int)$listing_id);
+		]]></hook>
+        <hook version="1.0.2" name="profileController"><![CDATA[
+            global $reefless, $profile_info;
+            $reefless -> loadClass('QrCode', false, 'qrCode');
+            $GLOBALS['rlQrCode'] -> remove_QR_ByUserID((int)$profile_info['ID']);
+		]]></hook>
+        <hook version="1.1.0" name="phpListingsAjaxDeleteListing"><![CDATA[
+            global $reefless;
+            $reefless -> loadClass('QrCode', false, 'qrCode');
+            $account_id = $GLOBALS['rlDb'] -> getOne("Account_ID", "`ID` = '{$param1['ID']}'", "listings");
+            $GLOBALS['rlQrCode'] -> remove_QR_ByListing($account_id, $param1['ID']);
+		]]></hook>
+        <hook version="1.0.2" name="apPhpListingsAjaxDeleteListing"><![CDATA[
+            //deprecated in 4.5
+            global $reefless, $listing;
+            $reefless -> loadClass('QrCode', false, 'qrCode');
+            $GLOBALS['rlQrCode'] -> remove_QR_ByListing((int)$listing['Account_ID'], (int)$listing['ID']);
+		]]></hook>
+        <hook version="1.1.0" name="phpDeleteListingData"><![CDATA[
+            global $reefless;
+            $account_id = $GLOBALS['rlDb'] -> getOne("Account_ID", "`ID` = '{$param1}'", "listings");
+            $reefless -> loadClass('QrCode', false, 'qrCode');
+            $GLOBALS['rlQrCode'] -> remove_QR_ByListing($account_id, $param1);
+        ]]></hook>
+        <hook version="1.1.0" name="apMixConfigItem"><![CDATA[
+            $GLOBALS['reefless']->loadClass('QrCode', false, 'qrCode');
+            $GLOBALS['rlQrCode']->hookApMixConfigItem($param1);
+        ]]></hook>
+    </hooks>
+
+    <configs key="qrCode" name="QR Code">
+        <![CDATA[]]>
+        <config version="1.1.0" key="qrCode_phone_field_name" name="Phone field" description="" type="select"><![CDATA[]]></config>
+    </configs>
+
+    <updates>
+		<update version="1.0.1" files="qrCode.tpl"><![CDATA[]]></update>
+		<update version="1.0.2" files="rlQrCode.class.php"><![CDATA[]]></update>
+		<update version="1.0.3"><![CDATA[]]></update>
+		<update version="1.0.4" files="qrCode.tpl,rlQrCode.class.php"><![CDATA[]]></update>
+        <update version="1.0.5" files=""><![CDATA[]]></update>
+        <update version="1.1.0" files="i18n/ru.json,qrCode.tpl,rlQrCode.class.php"><![CDATA[
+            $GLOBALS['reefless']->loadClass('QrCode', null, 'qrCode');
+            $GLOBALS['rlQrCode']->update110();
+        ]]></update>
+	</updates>
+    
+    <uninstall><![CDATA[
+	    global $reefless;
+	
+	    $reefless -> loadClass('QrCode', null, 'qrCode');
+		$GLOBALS['rlQrCode'] -> uninstall();
+	]]></uninstall>
+</plugin>
