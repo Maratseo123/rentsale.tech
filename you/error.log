@@ -1,1 +1,0 @@
-[2024-09-05 14:26:17] Database connection failed: SQLSTATE[HY000] [1045] Access denied for user 'your_username'@'localhost' (using password: YES)
